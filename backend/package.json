@@ -1,0 +1,30 @@
+{
+  "name": "ors-sh-backend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "db:migrate": "prisma migrate dev --schema=prisma/schema.prisma",
+    "db:migrate:prod": "prisma migrate deploy --schema=prisma/schema.prisma",
+    "db:generate": "prisma generate --schema=prisma/schema.prisma"
+  },
+  "dependencies": {
+    "@fastify/cors": "^10.0.0",
+    "@fastify/jwt": "^9.0.0",
+    "@fastify/static": "^8.0.0",
+    "@noble/curves": "^1.4.0",
+    "@noble/hashes": "^1.4.0",
+    "@prisma/client": "^6.0.0",
+    "dotenv": "^16.4.0",
+    "fastify": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "prisma": "^6.0.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.4.0"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "ors-sh",
+  "private": true,
+  "workspaces": ["backend", "frontend"],
+  "scripts": {
+    "dev:backend": "yarn workspace ors-sh-backend dev",
+    "dev:frontend": "yarn workspace ors-sh-frontend dev",
+    "build:backend": "yarn workspace ors-sh-backend build",
+    "build:frontend": "yarn workspace ors-sh-frontend build",
+    "db:migrate": "yarn workspace ors-sh-backend db:migrate",
+    "db:migrate:prod": "yarn workspace ors-sh-backend db:migrate:prod",
+    "db:generate": "yarn workspace ors-sh-backend db:generate",
+    "build": "yarn build:backend && yarn build:frontend"
+  }
+}
