@@ -36,7 +36,6 @@ export function buildApp() {
   app.register(staticFiles, {
     root: frontendDist,
     prefix: "/",
-    decorateReply: false,
   });
 
   // SPA fallback
