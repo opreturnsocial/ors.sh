@@ -2,6 +2,7 @@ import { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
 import { authenticate } from "../authenticate.js";
 import { prisma } from "../db.js";
 import { checkWriteRateLimit } from "../rateLimiter.js";
+import { validateUrl } from "../validateUrl.js";
 
 type PatchParams = { Params: { id: string }; Body: { url: string } };
 type DeleteParams = { Params: { id: string } };
@@ -45,10 +46,9 @@ export async function linkSlugRoutes(fastify: FastifyInstance) {
         return reply.code(400).send({ message: "url is required" });
       }
 
-      try {
-        new URL(url);
-      } catch {
-        return reply.code(400).send({ message: "Invalid URL" });
+      const urlValidation = validateUrl(url);
+      if (!urlValidation.valid) {
+        return reply.code(400).send({ message: urlValidation.error });
       }
 
       const updated = await prisma.link.update({
